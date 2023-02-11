@@ -1,8 +1,8 @@
 ﻿{
   "name": "com.kalkuz.pooling",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "displayName": "Kalkuz Object Pooling",
-  "description": "An Object Pooling system including static pools, dynamic pools and hybrid pools.",
+  "description": "An Object Pooling system including static pools and dynamic pools.",
   "category": "Tools",
   "unity": "2021.3",
   "unityRelease": "9f1",
