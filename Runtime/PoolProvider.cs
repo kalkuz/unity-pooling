@@ -39,16 +39,28 @@ namespace KalkuzSystems.Pooling
       m_instance.poolDictionary[newPool.ObjectSample.ID] = newPool;
     }
 
-    public static Pool GetPool(string id)
+    public static Pool GetPool(PoolObject po)
     {
       if (!m_instance)
       {
         throw new Exception("No PoolProvider instance is initialized! Failed to use object pooling");
       }
+      
+      var id = po.ID;
 
-      if (m_instance.poolDictionary.TryGetValue(id, out var value)) return value;
+      if (m_instance.poolDictionary.TryGetValue(id, out var value))
+      {
+        return value;
+      }
 
-      throw new Exception("There is no pool found for object id: " + id);
+      m_instance.poolDictionary[id] = new Pool()
+      {
+        objectSample = po,
+        type = PoolType.DYNAMIC,
+      };
+      
+      AssignNewPool(m_instance.poolDictionary[id]);
+      return m_instance.poolDictionary[id];
     }
   }
 }

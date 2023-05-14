@@ -10,9 +10,9 @@ namespace KalkuzSystems.Pooling
   {
     private Queue<PoolObject> queue;
 
-    [SerializeField] private PoolType type;
+    [SerializeField] internal PoolType type;
     [SerializeField] private int initialCapacity;
-    [SerializeField] private PoolObject objectSample;
+    [SerializeField] internal PoolObject objectSample;
 
     public Queue<PoolObject> Queue => queue;
     public PoolType Type => type;

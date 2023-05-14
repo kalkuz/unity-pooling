@@ -22,7 +22,7 @@ namespace KalkuzSystems.Pooling
     {
       if (inPool) return;
       
-      var pool = PoolProvider.GetPool(id);
+      var pool = PoolProvider.GetPool(this);
       pool.AddToPool(this);
       inPool = true;
     }
