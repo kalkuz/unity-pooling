@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace KalkuzSystems.Pooling
+namespace Kalkuz.Pooling
 {
   [Serializable]
   public sealed class Pool

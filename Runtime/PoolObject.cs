@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace KalkuzSystems.Pooling
+namespace Kalkuz.Pooling
 {
   public class PoolObject : MonoBehaviour
   {

@@ -1,6 +1,6 @@
 ﻿{
   "name": "com.kalkuz.pooling.Runtime",
-  "rootNamespace": "KalkuzSystems.Pooling",
+  "rootNamespace": "Kalkuz.Pooling",
   "references": [],
   "includePlatforms": [],
   "excludePlatforms": [],

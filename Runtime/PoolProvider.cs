@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KalkuzSystems.Pooling
+namespace Kalkuz.Pooling
 {
   public sealed class PoolProvider : MonoBehaviour
   {

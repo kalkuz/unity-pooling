@@ -1,4 +1,4 @@
-﻿namespace KalkuzSystems.Pooling
+﻿namespace Kalkuz.Pooling
 {
   public enum PoolType
   {
