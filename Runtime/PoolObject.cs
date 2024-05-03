@@ -1,30 +1,26 @@
-﻿using UnityEngine;
+﻿using Kalkuz.Utility.TagSystem;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Kalkuz.Pooling
 {
   public class PoolObject : MonoBehaviour
   {
-    [SerializeField] protected string id;
-    [SerializeField] protected UnityEvent onFirstInitialize;
-    private bool inPool;
+    [field: SerializeField, Header("Pooling"), TagSelect("PoolId")] public string PoolId { get; protected set; }
+    [field: SerializeField] public UnityEvent OnFirstInitialize { get; protected set; }
+    [field: SerializeField] public UnityEvent OnReturnToPool { get; protected set; }
+    
+    public bool InPool { get; set; }
 
-    public string ID => id;
-    public UnityEvent OnFirstInitialize => onFirstInitialize;
-
-    public bool InPool
+    public virtual void ReturnToPool()
     {
-      get => inPool;
-      set => inPool = value;
-    }
-
-    public void ReturnToPool()
-    {
-      if (inPool) return;
+      if (InPool) return;
       
       var pool = PoolProvider.GetPool(this);
       pool.AddToPool(this);
-      inPool = true;
+      InPool = true;
+      
+      OnReturnToPool?.Invoke();
     }
   }
 }

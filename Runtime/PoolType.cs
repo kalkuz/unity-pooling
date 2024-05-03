@@ -2,6 +2,7 @@
 {
   public enum PoolType
   {
-    STATIC, DYNAMIC
+    Static,
+    Dynamic
   }
 }

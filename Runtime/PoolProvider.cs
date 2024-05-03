@@ -8,7 +8,7 @@ namespace Kalkuz.Pooling
   {
     private static PoolProvider m_instance;
 
-    private readonly Dictionary<string, Pool> poolDictionary = new();
+    private static readonly Dictionary<string, Pool> PoolDictionary = new();
 
     [SerializeField] private List<Pool> pools;
 
@@ -30,13 +30,13 @@ namespace Kalkuz.Pooling
         throw new Exception("No PoolProvider instance is initialized! Failed to use object pooling");
       }
 
-      var go = new GameObject($"{newPool.ObjectSample.ID} Pool")
+      var go = new GameObject($"{newPool.ObjectSample.PoolId} Pool")
       {
         transform = { parent = m_instance.transform }
       };
       newPool.Initialize(go.transform);
 
-      m_instance.poolDictionary[newPool.ObjectSample.ID] = newPool;
+      PoolDictionary[newPool.ObjectSample.PoolId] = newPool;
     }
 
     public static Pool GetPool(PoolObject po)
@@ -46,21 +46,21 @@ namespace Kalkuz.Pooling
         throw new Exception("No PoolProvider instance is initialized! Failed to use object pooling");
       }
       
-      var id = po.ID;
+      var id = po.PoolId;
 
-      if (m_instance.poolDictionary.TryGetValue(id, out var value))
+      if (PoolDictionary.TryGetValue(id, out var value))
       {
         return value;
       }
 
-      m_instance.poolDictionary[id] = new Pool()
+      PoolDictionary[id] = new Pool()
       {
-        objectSample = po,
-        type = PoolType.DYNAMIC,
+        ObjectSample = po,
+        Type = PoolType.Dynamic,
       };
       
-      AssignNewPool(m_instance.poolDictionary[id]);
-      return m_instance.poolDictionary[id];
+      AssignNewPool(PoolDictionary[id]);
+      return PoolDictionary[id];
     }
   }
 }
